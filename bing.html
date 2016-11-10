@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>bing search</title>
+	
+	<script type="text/javascript" href="bing.js"></script>
+	<style type="text/css">
+		body{
+			background-color: #333;
+		}
+		html {
+			 overflow-x: hidden; 
+			 overflow-y: hidden; 
+		}
+		.bg-div{
+			/*background-image: url(images/river.jpg);*/
+/*			width: 1228px;
+			height:690px;*/
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		.logo{
+			background-image: url(images/logo.png);
+			width: 107px;
+			height: 53px;
+			float: left;
+			margin:-4px 18px 0 0;
+		}
+		form{
+			float: left;
+			background-color: #fff;
+			padding: 5px;
+		}
+		.search-input-text{
+			border: 0;
+			float: left;
+			height: 25px;
+			line-height: 25px;
+			outline: none;
+			width: 350px;
+		}
+		.search-input-button{
+			border:0;
+			background-image: url(images/search-button.png);
+			width: 29px;
+			height: 29px;
+			float: left;
+			outline:none;
+		}
+		.search-box{
+			position: absolute;
+			top: 150px;
+			left: 200px;
+		}
+		/*.search{
+			position: absolute;
+			top: 120px;
+			left: 400px;
+		}*/
+		.suggest{
+			background-color: #fff;
+			width: 388px;
+			border:1px solid #999;
+			position:absolute; 
+			top:100px;
+			left:100px;
+		}
+		.suggest ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.suggest ul li{
+			padding: 3px;
+			font-size: 14px;
+			line-height: 25px;
+			cursor: pointer;
+		}
+		.suggest ul li:hover{
+			text-decoration: underline;
+			background-color: #e5e5e5;
+		}
+	</style>
+</head>
+<body>
+	<div class="bg-div">
+		<img src="images/river.jpg">
+		<div class="search-box">
+			<!-- <div class="search"> -->
+				<div class="logo"></div>
+				<form id="search-form">
+					<input type="text" class="search-input-text" name="q" id="search_input" autocomplete="off" />
+					<input type="submit" class="search-input-button" value="" />
+				</form>
+			<!-- </div> -->
+		</div>
+			<div class="suggest" id="search-suggest" style="display: none">
+				<ul>
+					<li>搜索结果1</li>
+					<li>搜索结果2</li>
+					<!-- <li>搜索结果3</li> -->
+				</ul>
+			</div>
+		
+	</div>
+	<!-- <script src="http://code.jquery-1.10.2.min.js"></script> -->
+	<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		$('#search_input').bind('keyup',function(){
+			$('#search-suggest').show().css({
+				top:$('#search-form').offset().top+$('#search-form').height()+2,
+				left:$('#search-form').offset().left-8,
+				position:'absolute'
+			})
+			$('img').css({
+				opacity:.5
+				// -webkit-transition-delay:0.5s
+			})
+		})
+		$('img').bind('click',function(){
+			$('img').css({
+				opacity:1
+				// -webkit-transition-delay:0.5s
+			})
+			$('#search-suggest').hide()
+		})
+	</script>
+</body>
+</html>
